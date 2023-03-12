@@ -25,11 +25,11 @@ class ListingController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function create()
     {
-        //
+        return inertia('Listing/Create');
     }
 
     /**
