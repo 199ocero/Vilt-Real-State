@@ -60,7 +60,7 @@ class ListingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $listing
      * @return \Inertia\Response
      */
     public function show(Listing $listing)
@@ -76,12 +76,17 @@ class ListingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $listing
+     * @return \Inertia\Response
      */
-    public function edit($id)
+    public function edit(Listing $listing)
     {
-        //
+        return inertia(
+            'Listing/Edit',
+            [
+                'listing' => $listing
+            ]
+        );
     }
 
     /**
@@ -89,11 +94,24 @@ class ListingController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Listing $listing)
     {
-        //
+        $listing->update(
+            $request->validate([
+                'beds' => 'required|integer|min:0|max:20',
+                'baths' => 'required|integer|min:0|max:20',
+                'area' => 'required|integer|min:0|max:1500',
+                'city' => 'required|string',
+                'code' => 'required|integer',
+                'street' => 'required|string',
+                'street_number' => 'required|min:1|max:1000',
+                'price' => 'required|integer|min:1|max:20000000',
+            ])
+        );
+
+        return redirect()->route('listing.index')->with('success', 'Listing was updated.');
     }
 
     /**
