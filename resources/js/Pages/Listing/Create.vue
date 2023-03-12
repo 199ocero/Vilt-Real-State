@@ -14,6 +14,14 @@
         <input type="text" v-model.number="form.area" />
       </div>
       <div>
+        <label for="">City</label>
+        <input type="text" v-model="form.city" />
+      </div>
+      <div>
+        <label for="">Post Code</label>
+        <input type="text" v-model.number="form.code" />
+      </div>
+      <div>
         <label for="">Street</label>
         <input type="text" v-model="form.street" />
       </div>
