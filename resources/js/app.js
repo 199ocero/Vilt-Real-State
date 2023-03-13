@@ -3,6 +3,7 @@ import "./bootstrap";
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
 import { ZiggyVue } from "ziggy";
+import "../css/app.css";
 
 createInertiaApp({
   resolve: (name) => {
