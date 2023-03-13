@@ -53,6 +53,7 @@
 <script setup>
 import MainLayout from "@/Layouts/MainLayout.vue";
 import { useForm } from "@inertiajs/vue3";
+
 defineOptions({ layout: MainLayout });
 
 const form = useForm({
@@ -66,7 +67,7 @@ const form = useForm({
   price: null,
 });
 
-const create = () => form.post("/listing");
+const create = () => form.post(route("listing.store"));
 </script>
 
 <style scoped>
