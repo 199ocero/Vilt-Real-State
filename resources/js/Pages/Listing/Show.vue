@@ -20,7 +20,24 @@
       </Box>
       <Box>
         <template #header> Offer </template>
-        Make an offer
+        <div>
+          <label class="label">Interest rate (2.5%)</label>
+          <input
+            type="range"
+            min="0.1"
+            max="30"
+            step="0.1"
+            class="range-slider"
+          />
+
+          <label class="label">Duration (25 years)</label>
+          <input type="range" min="3" max="35" step="1" class="range-slider" />
+
+          <div class="mt-2 text-gray-600 dark:text-gray-300">
+            <div class="text-gray-400">Your monthly payment</div>
+            <ListingPrice :price="500" class="text-3xl" />
+          </div>
+        </div>
       </Box>
     </div>
   </div>
