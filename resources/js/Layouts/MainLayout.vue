@@ -11,9 +11,7 @@
           <Link :href="route('listing.index')">Vilt Real State</Link>
         </div>
         <div class="text-base font-medium">
-          <Link
-            :href="route('listing.create')"
-            class="p-2 text-white bg-blue-600 rounded-md hover:bg-blue-500"
+          <Link :href="route('listing.create')" class="btn-primary"
             >+ New Listing</Link
           >
         </div>
