@@ -32,10 +32,3 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
 </script>
-
-<style scoped>
-.success {
-  background-color: green;
-  color: white;
-}
-</style>
