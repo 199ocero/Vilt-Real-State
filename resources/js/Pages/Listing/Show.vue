@@ -19,10 +19,11 @@
         ></ListingAddress>
       </Box>
       <Box>
-        <template #header> Offer </template>
+        <template #header> Monthly Payment </template>
         <div>
-          <label class="label">Interest rate (2.5%)</label>
+          <label class="label">Interest rate ({{ interestRate }}%)</label>
           <input
+            v-model="interestRate"
             type="range"
             min="0.1"
             max="30"
@@ -30,12 +31,19 @@
             class="range-slider"
           />
 
-          <label class="label">Duration (25 years)</label>
-          <input type="range" min="3" max="35" step="1" class="range-slider" />
+          <label class="label">Duration ({{ duration }} years)</label>
+          <input
+            v-model="duration"
+            type="range"
+            min="3"
+            max="35"
+            step="1"
+            class="range-slider"
+          />
 
           <div class="mt-2 text-gray-600 dark:text-gray-300">
             <div class="text-gray-400">Your monthly payment</div>
-            <ListingPrice :price="500" class="text-3xl" />
+            <ListingPrice :price="monthlyPayment" class="text-3xl" />
           </div>
         </div>
       </Box>
@@ -48,9 +56,26 @@ import ListingAddress from "@/Components/ListingAddress.vue";
 import ListingPrice from "@/Components/ListingPrice.vue";
 import ListingSpace from "@/Components/ListingSpace.vue";
 import Box from "@/Components/UI/Box.vue";
+import { ref, computed } from "vue";
 
-defineProps({
+const interestRate = ref(2.5);
+const duration = ref(5);
+
+const props = defineProps({
   listing: Object,
+});
+
+const monthlyPayment = computed(() => {
+  const principle = props.listing.price;
+  const monthlyInterest = interestRate.value / 100 / 12;
+  const numberOfPaymentMonths = duration.value * 12;
+
+  return (
+    (principle *
+      monthlyInterest *
+      Math.pow(1 + monthlyInterest, numberOfPaymentMonths)) /
+    (Math.pow(1 + monthlyInterest, numberOfPaymentMonths) - 1)
+  );
 });
 
 defineOptions({ layout: MainLayout });
