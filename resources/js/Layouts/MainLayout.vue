@@ -20,15 +20,18 @@
   </header>
   <main class="container p-4 mx-auto">
     <div
-      v-if="$page.props.flash.success"
+      v-if="flashSuccess"
       class="p-3 mb-2 text-green-700 bg-green-200 rounded-md"
     >
-      {{ $page.props.flash.success }}
+      {{ flashSuccess }}
     </div>
     <slot></slot>
   </main>
 </template>
 
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import { Link, usePage } from "@inertiajs/vue3";
+import { computed } from "vue";
+
+const flashSuccess = computed(() => usePage().props.flash.success);
 </script>
