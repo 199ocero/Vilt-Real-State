@@ -15,7 +15,7 @@ const formattedPrice = computed(() =>
   Number(props.price).toLocaleString("en-PH", {
     style: "currency",
     currency: "PHP",
-    maximumFractionDigits: 2,
+    maximumFractionDigits: 0,
   })
 );
 </script>
