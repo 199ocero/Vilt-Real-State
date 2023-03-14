@@ -18,7 +18,11 @@
             >+ New Listing</Link
           >
           <span class="text-gray-600">|</span>
-          <div class="font-medium text-red-400">Logout</div>
+          <div class="font-medium text-red-400">
+            <Link :href="route('logout')" method="DELETE" as="button"
+              >Logout</Link
+            >
+          </div>
         </div>
         <div v-else>
           <Link :href="route('login')" class="font-medium btn-primary"
