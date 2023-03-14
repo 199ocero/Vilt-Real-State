@@ -39,13 +39,13 @@ import ListingAddress from "@/Components/ListingAddress.vue";
 import ListingSpace from "@/Components/ListingSpace.vue";
 import ListingPrice from "@/Components/ListingPrice.vue";
 import Box from "@/Components/UI/Box.vue";
-import { useMonthlyPayment } from "@/Composables/useMonthlyPayment";
+import { usePayment } from "@/Composables/usePayment";
 
 const props = defineProps({
   listing: Object,
 });
 
-const { monthlyPayment } = useMonthlyPayment(props.listing.price, 2.5, 5);
+const { monthlyPayment } = usePayment(props.listing.price, 2.5, 5);
 
 defineOptions({ layout: MainLayout });
 </script>

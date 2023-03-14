@@ -57,7 +57,7 @@ import ListingPrice from "@/Components/ListingPrice.vue";
 import ListingSpace from "@/Components/ListingSpace.vue";
 import Box from "@/Components/UI/Box.vue";
 import { ref } from "vue";
-import { useMonthlyPayment } from "@/Composables/useMonthlyPayment";
+import { usePayment } from "@/Composables/usePayment";
 
 const interestRate = ref(2.5);
 const duration = ref(5);
@@ -66,7 +66,7 @@ const props = defineProps({
   listing: Object,
 });
 
-const { monthlyPayment } = useMonthlyPayment(
+const { monthlyPayment } = usePayment(
   props.listing.price,
   interestRate,
   duration
