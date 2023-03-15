@@ -18,7 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/hello', [IndexController::class, 'show']);
-Route::resource('listing', ListingController::class);
+
+Route::resource('listing', ListingController::class)->only(['index', 'show']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('listing', ListingController::class)->except(['index', 'show']);
+});
 
 Route::get('login', [AuthController::class, 'create'])->name('login');
 Route::post('login', [AuthController::class, 'store'])->name('login.store');
