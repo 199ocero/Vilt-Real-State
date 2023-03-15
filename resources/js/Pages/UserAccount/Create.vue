@@ -46,7 +46,7 @@
             >Confirm Password</label
           >
           <input
-            v-model="form.password"
+            v-model="form.password_confirmation"
             type="password"
             id="password_confirmation"
             class="input"
@@ -72,7 +72,7 @@ const form = useForm({
   password: null,
   password_confirmation: null,
 });
-const create = () => form.post(route("login"));
+const create = () => form.post(route("user-account.store"));
 
 defineOptions({ layout: MainLayout });
 </script>
