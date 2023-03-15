@@ -24,9 +24,14 @@
             >
           </div>
         </div>
-        <div v-else>
+        <div v-else class="flex gap-4">
           <Link :href="route('login')" class="font-medium btn-primary"
             >Sign in</Link
+          >
+          <Link
+            :href="route('user-account.create')"
+            class="font-medium btn-primary"
+            >Create account</Link
           >
         </div>
       </nav>
