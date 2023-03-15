@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
@@ -50,5 +51,10 @@ class User extends Authenticatable
         get: fn($value) => $value,
         set: fn($value) => Hash::make($value),
         );
+    }
+
+    public function listing(): HasMany
+    {
+        return $this->hasMany(Listing::class, 'by_user_id');
     }
 }
