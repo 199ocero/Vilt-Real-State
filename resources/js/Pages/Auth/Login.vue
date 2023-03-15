@@ -43,7 +43,7 @@ const form = useForm({
   email: null,
   password: null,
 });
-const login = () => form.post(route("login"));
+const login = () => form.post(route("login.store"));
 
 defineOptions({ layout: MainLayout });
 </script>
