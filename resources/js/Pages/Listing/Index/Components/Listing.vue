@@ -19,33 +19,37 @@
         ></ListingAddress>
       </Link>
     </div>
-    <div>
-      <Link :href="route('listing.edit', { listing: listing.id })">Edit</Link>
-    </div>
-    <div>
-      <Link
-        :href="route('listing.destroy', { listing: listing.id })"
-        method="DELETE"
-        as="button"
-        >Delete</Link
-      >
+    <div v-if="user">
+      <div>
+        <Link :href="route('listing.edit', { listing: listing.id })">Edit</Link>
+      </div>
+      <div>
+        <Link
+          :href="route('listing.destroy', { listing: listing.id })"
+          method="DELETE"
+          as="button"
+          >Delete</Link
+        >
+      </div>
     </div>
   </Box>
 </template>
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import { Link, usePage } from "@inertiajs/vue3";
 import MainLayout from "@/Layouts/MainLayout.vue";
 import ListingAddress from "@/Components/ListingAddress.vue";
 import ListingSpace from "@/Components/ListingSpace.vue";
 import ListingPrice from "@/Components/ListingPrice.vue";
 import Box from "@/Components/UI/Box.vue";
 import { usePayment } from "@/Composables/usePayment";
+import { computed } from "vue";
 
 const props = defineProps({
   listing: Object,
 });
 
 const { monthlyPayment } = usePayment(props.listing.price, 2.5, 5);
+const user = computed(() => usePage().props.user);
 
 defineOptions({ layout: MainLayout });
 </script>
