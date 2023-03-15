@@ -10,6 +10,7 @@ class ListingController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
+        $this->authorizeResource(Listing::class, 'listing');
     }
     public function index()
     {
