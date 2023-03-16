@@ -71,7 +71,7 @@ import MainLayout from "@/Layouts/MainLayout.vue";
 import ListingAddress from "@/Components/ListingAddress.vue";
 import ListingPrice from "@/Components/ListingPrice.vue";
 import ListingSpace from "@/Components/ListingSpace.vue";
-import Box from "@/Components/UI/Box.vue";
+import Box from "@/Components/Ui/Box.vue";
 import { ref } from "vue";
 import { usePayment } from "@/Composables/usePayment";
 
